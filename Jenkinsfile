@@ -26,6 +26,7 @@ pipeline {
                 sh 'docker rm -f ${CONT_NAME}'
                 sh 'docker run \
                     --name ${CONT_NAME} \
+                    -d \
                     -p ${PORT}:80 \
                     -e home_service_url=${home_service_url} \
                     -e payments_service_url=${payments_service_url} \
