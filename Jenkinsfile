@@ -24,7 +24,16 @@ pipeline {
         stage('Run') {
             steps {
                 sh 'docker rm -f ${CONT_NAME}'
-                sh 'docker run --name ${CONT_NAME} -d -p ${PORT}:80 --env-file <<< "$(env | grep "_service_url$")" ${IMAGE_NAME}' 
+                sh 'docker run \
+                    --name ${CONT_NAME} \
+                    -d -p ${PORT}:80 \
+                    -e home_service_url=${home_service_url} \
+                    -e payments_service_url=${payments_service_url} \
+                    -e messages_service_url=${messages_service_url} \
+                    -e nav_service_url=${nav_service_url} \
+                    -e sponsors_list_service_url=${sponsors_list_service_url} \
+                    -e search_service_url=${search_service_url} \
+                    ${IMAGE_NAME}' 
             }
         }
     }
