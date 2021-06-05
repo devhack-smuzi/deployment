@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+    nginx:
+        build: ./nginx
+        environment:
+            # обязательно слэши на конце
+            - messages_service_url=http://messages/
+            - payments_service_url=http://payments/
+            - nav_service_url=http://nav/
+        ports:
+            - 8080:8080
+    nav:
+        build: ../nav
+        environment:
+            - BASE_URL
+    messages:
+        build: ../messages
+        environment:
+            - BASE_URL
+        ports:
+            - 3000:80
+    payments:
+        build: ../payments
+        environment:
+            - BASE_URL
