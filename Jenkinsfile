@@ -13,6 +13,7 @@ pipeline {
         nav_service_url             = 'http://localhost:3002'
         sponsors_list_service_url   = 'http://localhost:3005'
         search_service_url          = 'http://localhost:3004'
+        dashboard_service_url       = 'http://localhost:5000'
     }
 
     stages {
