@@ -35,6 +35,7 @@ pipeline {
                     -e nav_service_url=${nav_service_url} \
                     -e sponsors_list_service_url=${sponsors_list_service_url} \
                     -e search_service_url=${search_service_url} \
+                    -e dashboard_service_url=${dashboard_service_url} \
                     ${IMAGE_NAME}' 
             }
         }
