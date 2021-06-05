@@ -7,6 +7,9 @@ services:
             - messages_service_url=http://messages/
             - payments_service_url=http://payments/
             - nav_service_url=http://nav/
+            - sponsors_list_service_url=http://sponsors-list/
+            - search_service_url=http://search/
+            - home_service_url=http://home/
         ports:
             - 8080:8080
     nav:
@@ -17,9 +20,21 @@ services:
         build: ../messages
         environment:
             - BASE_URL
-        ports:
-            - 3000:80
     payments:
         build: ../payments
         environment:
             - BASE_URL
+    sponsors-list:
+        build: ../sponsors-list
+        environment:
+            - BASE_URL
+    search:
+        build: ../search
+        environment:
+            - BASE_URL
+    home:
+        build: ../home
+        environment:
+            - BASE_URL
+        ports:
+            - 3000:8080
