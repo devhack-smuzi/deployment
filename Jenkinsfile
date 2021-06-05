@@ -3,9 +3,10 @@ pipeline {
 
     environment {
         PORT = 80
+        NETWORK = "smuzi"
 
         IMAGE_NAME = 'nginx-image'
-        CONT_NAME = 'nginx-cont'
+        CONT_NAME = 'nginx'
 
         home_service_url            = 'http://localhost:3000/'
         payments_service_url        = 'http://localhost:3003/'
@@ -27,6 +28,7 @@ pipeline {
                 sh 'docker rm -f ${CONT_NAME}'
                 sh 'docker run \
                     --name ${CONT_NAME} \
+                    --net ${NETWORK} \
                     -d \
                     -p ${PORT}:80 \
                     -e home_service_url=${home_service_url} \
