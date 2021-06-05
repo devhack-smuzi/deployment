@@ -3,18 +3,15 @@ pipeline {
 
     environment {
         PORT = 80
-        NETWORK = "smuzi"
+        NETWORK = "mf-net"
 
-        IMAGE_NAME = 'nginx-image'
+        IMAGE_NAME = 'nginx-img'
         CONT_NAME = 'nginx'
 
-        home_service_url            = 'http://localhost:3000/'
-        payments_service_url        = 'http://localhost:3003/'
-        messages_service_url        = 'http://localhost:3001/'
-        nav_service_url             = 'http://localhost:3002/'
-        sponsors_list_service_url   = 'http://localhost:3005/'
-        search_service_url          = 'http://localhost:3004/'
-        dashboard_service_url       = 'http://dashboard/'
+        main_service_url            = 'http://mf-main/'
+        payments_service_url        = 'http://mf-payments/'
+        cards_service_url           = 'http://mf-cards/'
+        navigation_service_url      = 'http://mf-navigation/'
     }
 
     stages {
@@ -26,18 +23,15 @@ pipeline {
         stage('Run') {
             steps {
                 sh 'docker rm -f ${CONT_NAME}'
-                sh 'docker run \
+                sh 'docker run -d \
                     --name ${CONT_NAME} \
                     --net ${NETWORK} \
-                    -d \
-                    -p ${PORT}:80 \
-                    -e home_service_url=${home_service_url} \
+                    -p ${PORT}:${PORT} \
+                    -e PORT=${PORT} \
+                    -e main_service_url=${main_service_url} \
                     -e payments_service_url=${payments_service_url} \
-                    -e messages_service_url=${messages_service_url} \
-                    -e nav_service_url=${nav_service_url} \
-                    -e sponsors_list_service_url=${sponsors_list_service_url} \
-                    -e search_service_url=${search_service_url} \
-                    -e dashboard_service_url=${dashboard_service_url} \
+                    -e cards_service_url=${cards_service_url} \
+                    -e navigation_service_url=${navigation_service_url} \
                     ${IMAGE_NAME}' 
             }
         }
