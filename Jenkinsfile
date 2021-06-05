@@ -24,7 +24,7 @@ pipeline {
         stage('Run') {
             steps {
                 sh 'docker rm -f ${CONT_NAME}'
-                sh 'docker run --name ${CONT_NAME} -d -p --env <(env | grep "_service_url$") ${PORT}:80 ${IMAGE_NAME}' 
+                sh 'docker run --name ${CONT_NAME} -d -p --env-file <(env | grep "_service_url$") ${PORT}:80 ${IMAGE_NAME}' 
             }
         }
     }
