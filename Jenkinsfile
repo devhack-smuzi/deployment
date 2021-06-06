@@ -34,7 +34,7 @@ pipeline {
                     -e cards_service_url=${cards_service_url} \
                     -e navigation_service_url=${navigation_service_url} \
                     -e dashboard_service_url=${dashboard_service_url} \
-                    ${IMAGE_NAME}' 
+                    ${IMAGE_NAME}'  
             }
         }
     }
