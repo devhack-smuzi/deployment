@@ -24,7 +24,7 @@ pipeline {
         stage('Run') {
             steps {
                 sh 'docker rm -f ${CONT_NAME}'
-                sh 'docker run -d \
+                sh 'docker run \
                     --name ${CONT_NAME} \
                     --net ${NETWORK} \
                     -p ${PORT}:${PORT} \
