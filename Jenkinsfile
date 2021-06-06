@@ -13,7 +13,8 @@ pipeline {
         payments_service_url        = 'http://mf-payments/'
         cards_service_url           = 'http://mf-cards/'
         navigation_service_url      = 'http://mf-navigation/'
-        create_payment_service_url      = 'http://mf-create-payment/'
+        create_payment_service_url  = 'http://mf-create-payment/'
+        statistics_service_url      = 'http://mf-statistics/'
     }
 
     stages {
@@ -36,6 +37,7 @@ pipeline {
                     -e navigation_service_url=${navigation_service_url} \
                     -e dashboard_service_url=${dashboard_service_url} \
                     -e create_payment_service_url=${create_payment_service_url} \
+                    -e statistics_service_url=${statistics_service_url} \
                     ${IMAGE_NAME}'  
             }
         }
