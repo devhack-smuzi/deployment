@@ -8,6 +8,7 @@ pipeline {
         IMAGE_NAME = 'nginx-img'
         CONT_NAME = 'nginx'
 
+        dashboard_service_url       = 'http://dashboard/'
         main_service_url            = 'http://mf-main/'
         payments_service_url        = 'http://mf-payments/'
         cards_service_url           = 'http://mf-cards/'
@@ -32,6 +33,7 @@ pipeline {
                     -e payments_service_url=${payments_service_url} \
                     -e cards_service_url=${cards_service_url} \
                     -e navigation_service_url=${navigation_service_url} \
+                    -e dashboard_service_url=${dashboard_service_url} \
                     ${IMAGE_NAME}' 
             }
         }
